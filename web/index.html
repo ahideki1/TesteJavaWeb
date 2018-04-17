@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src="Js/jquery-1.10.2.js"></script>
+    </head>
+    <body>
+        <form	action="adicionaContato" method="post" id="frmContato">
+            Nome:	<input	type="text" name="nome"	/><br	/>
+            E-mail:	<input	type="text" name="email"	/><br	/>
+            Endereço:	<input	type="text" name="endereco"	/><br	/>
+            Data	Nascimento:
+                                            <input	type="text" name="dataNascimento"	/><br	/>
+            <input type="submit" value="Gravar"	/>
+            
+            <input type="button" value="Gravar Ajax" onclick="gravar();" />
+        </form>
+        <div id="teste"></div>
+    </body>
+</html>
+
+<script>
+function gravar(){
+    $.ajax({
+        type:"post",
+        cache:false,
+        url:"adicionaContato",
+        data:$('#frmContato').serialize(),
+        beforeSend: function(){
+            
+        },
+        success:function(retorno){
+            $('#teste').html(retorno);
+        },
+        error:function(){
+            alert('erro');
+        }
+    });
+}    
+</script>
+    
